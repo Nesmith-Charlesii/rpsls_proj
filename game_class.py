@@ -2,6 +2,7 @@ from player_class import Player
 from human_class import Human
 from computer_class import Computer
 
+
 class Game:
     def __init__(self):
         self.player_one = Human()
@@ -33,7 +34,11 @@ class Game:
         print(f"\n\t{self.play_mode} selected")
 
     def play(self):
-        self.display_gesture_options()
+        while self.player_one.score or self.player_two.score != 2 or 3:
+            self.display_gesture_options()
+            self.player_one.throw_hand()
+            self.player_two.computer_gesture()
+
         pass
 
     def display_gesture_options(self):

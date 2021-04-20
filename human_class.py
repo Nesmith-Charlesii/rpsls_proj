@@ -14,4 +14,4 @@ class Human(Player):
         user_choice = input("\nChoose your hand! : ")
         choice_index = int(user_choice)
         self.chosen_gesture = self.gestures[choice_index]
-        print(f"{self.name} has chosen to play {self.chosen_gesture}")
+        print(f"\n{self.name} has chosen to play {self.chosen_gesture}")
