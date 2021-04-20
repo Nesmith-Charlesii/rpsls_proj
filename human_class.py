@@ -5,3 +5,13 @@ from player_class import Player
 class Human(Player):
     def __init__(self):
         super().__init__()
+
+    def set_name(self):
+        user_name = input("Hello new player! Please, enter your name:  ")
+        self.name = user_name
+
+    def throw_hand(self):
+        user_choice = input("\nChoose your hand! : ")
+        choice_index = int(user_choice)
+        self.chosen_gesture = self.gestures[choice_index]
+        print(f"{self.name} has chosen to play {self.chosen_gesture}")

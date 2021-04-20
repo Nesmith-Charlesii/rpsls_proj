@@ -10,4 +10,4 @@ class Computer(Player):
     def computer_gesture(self):
         rand = random.randrange(0, 4)
         computer_choice_gesture = self.gestures[rand]
-        print(f"AI has chosen {computer_choice_gesture} as their hand")
+        print(f"AI has chosen to play {computer_choice_gesture}")

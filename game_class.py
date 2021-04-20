@@ -1,10 +1,11 @@
 from player_class import Player
-
+from human_class import Human
+from computer_class import Computer
 
 class Game:
     def __init__(self):
-        self.player_one = Player()
-        self.player_two = Player()
+        self.player_one = Human()
+        self.player_two = Computer()
         self.play_mode = " "
         self.game_rounds = 3
 
@@ -16,9 +17,9 @@ class Game:
 
     def game_intro(self):
         print("Enter: Rock, Paper, Scissors, Lizard, Spock!\nOnly chance will tell!\n")
-        user_name = input("Hello new player! Please, enter your name:  ")
-        self.player_one.name = user_name
+        self.player_one.set_name()
 
+    # CREATE A WHILE LOOP TO RE-PROMPT FOR VALIDITY
     def play_mode_selection(self):
         mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
         if mode == '1':
@@ -36,11 +37,8 @@ class Game:
         pass
 
     def display_gesture_options(self):
-        print(f"\nGesture Options:\n0: {self.player_one.gestures[0]}\n1: {self.player_one.gestures[1]}\n2: {self.player_one.gestures[2]}\n3: {self.player_one.gestures[3]}\n4: {self.player_one.gestures[4]}")
-        user_choice = input("\nChoose your hand! : ")
-        choice_index = int(user_choice)
-        self.player_one.chosen_gesture = self.player_one.gestures[choice_index]
-        print(f"{self.player_one.name} has chosen {self.player_one.chosen_gesture} as their hand")
+        print(
+            f"\nGesture Options:\n0: {self.player_one.gestures[0]}\n1: {self.player_one.gestures[1]}\n2: {self.player_one.gestures[2]}\n3: {self.player_one.gestures[3]}\n4: {self.player_one.gestures[4]}")
 
     def display_winner(self):
         pass
