@@ -12,7 +12,7 @@ class Game:
         self.display_winner()
 
     def game_intro(self):
-        pass
+        print("Rock, Paper, Lizard, Spock! Chance will tell!")
 
     def play(self):
         pass
