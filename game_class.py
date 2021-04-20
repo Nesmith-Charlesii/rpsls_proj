@@ -22,14 +22,14 @@ class Game:
     def play_mode_selection(self):
         mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
         if mode == '1':
-            mode = 'single player'
+            mode = 'SINGLE PLAYER'
         elif mode == '2':
-            mode = 'multiplayer'
+            mode = 'MULTIPLAYER'
         else:
-            print("Please enter either 1 or 2")
-            mode = input("Enter 1 : single player\nEnter 2 : multiplayer\nChoose player mode:  ")
+            print("\nPlease enter either 1 or 2 !")
+            mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
         self.play_mode = mode
-        print(f"\t{self.play_mode} selected\n\t******")
+        print(f"\n\t{self.play_mode} selected")
 
     def play(self):
         self.display_gesture_options()

@@ -1,3 +1,4 @@
+import random
 from player_class import Player
 
 
@@ -5,3 +6,8 @@ from player_class import Player
 class Computer(Player):
     def __init__(self):
         super().__init__()
+
+    def computer_gesture(self):
+        rand = random.randrange(0, 4)
+        computer_choice_gesture = self.gestures[rand]
+        print(f"AI has chosen {computer_choice_gesture} as their hand")
