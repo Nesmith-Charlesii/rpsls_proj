@@ -35,7 +35,7 @@ class Game:
         print(f"\n\t{self.play_mode} selected")
 
     def play(self):
-        while self.game_rounds < 3:
+        while self.player_one.score < self.player_two.score + 2 and self.player_two.score < self.player_one.score + 2:
             # show gesture options at every round
             print(f"\nROUND {self.game_rounds}!")
             self.display_gesture_options()
@@ -45,7 +45,6 @@ class Game:
             if self.player_one.chosen_gesture == self.player_two.chosen_gesture:
                 print("\nTie!")
                 # add a round if there is a tie for the game to go to 3 rounds instead of a best out of two
-                self.game_rounds += 1
                 self.player_one.score += 1
                 self.player_two.score += 1
                 print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
@@ -80,7 +79,7 @@ class Game:
                     self.player_one.score += 1
                 print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
             self.game_rounds += 1
-            if self.game_rounds == 3 or self.game_rounds >= 3:
+            if self.player_one.score == self.player_two.score + 2 or self.player_two.score == self.player_one.score + 2:
                 self.display_winner()
 
     def display_gesture_options(self):
@@ -88,7 +87,7 @@ class Game:
             f"\nGesture Options:\n0: {self.player_one.gestures[0]}\n1: {self.player_one.gestures[1]}\n2: {self.player_one.gestures[2]}\n3: {self.player_one.gestures[3]}\n4: {self.player_one.gestures[4]}")
 
     def display_winner(self):
-        if self.player_one.score > self.player_two.score:
+        if self.player_one.score == self.player_two.score + 2:
             print(f"{self.player_one.name} wins!")
-        else:
+        elif self.player_two.score == self.player_one.score + 2:
             print(f"{self.player_two.name} wins!")
