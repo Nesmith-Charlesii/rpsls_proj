@@ -2,12 +2,13 @@ from player_class import Player
 from human_class import Human
 from computer_class import Computer
 
+
 class Game:
     def __init__(self):
         self.player_one = Human()
         self.player_two = Computer()
         self.play_mode = " "
-        self.game_rounds = 3
+        self.game_rounds = 0
 
     def run_game(self):
         self.game_intro()
@@ -18,6 +19,7 @@ class Game:
     def game_intro(self):
         print("Enter: Rock, Paper, Scissors, Lizard, Spock!\nOnly chance will tell!\n")
         self.player_one.set_name()
+        print(f"Welcome {self.player_one.name}")
 
     # CREATE A WHILE LOOP TO RE-PROMPT FOR VALIDITY
     def play_mode_selection(self):
@@ -33,21 +35,43 @@ class Game:
         print(f"\n\t{self.play_mode} selected")
 
     def play(self):
-        while self.player_one.score < 3 and self.player_two.score < 3:
+        while self.game_rounds < 3:
             self.display_gesture_options()
             self.player_one.throw_hand()
             self.player_two.computer_hand()
-            if self.player_one.throw_hand() == 'rock':
-                pass
-            if self.player_one.throw_hand() == 'paper':
-                pass
-            if self.player_one.throw_hand() == 'scissors':
-                pass
-            if self.player_one.throw_hand() == 'lizard':
-                pass
-            if self.player_one.throw_hand() == 'spock':
-                pass
-        pass
+            if self.player_one.chosen_gesture == self.player_two.chosen_gesture:
+                print("\nTie!")
+                print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
+            elif self.player_one.chosen_gesture == "rock":
+                if self.player_two.chosen_gesture == 'paper' or self.player_two.chosen_gesture == 'spock':
+                    self.player_two.score += 1
+                else:
+                    self.player_one.score += 1
+                print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
+            elif self.player_one.chosen_gesture == "paper":
+                if self.player_two.chosen_gesture == 'scissors' or self.player_two.chosen_gesture == 'lizard':
+                    self.player_two.score += 1
+                else:
+                    self.player_one.score += 1
+                print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
+            elif self.player_one.chosen_gesture == "scissors":
+                if self.player_two.chosen_gesture == 'rock' or self.player_two.chosen_gesture == 'spock':
+                    self.player_two.score += 1
+                else:
+                    self.player_one.score += 1
+                print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
+            elif self.player_one.chosen_gesture == "lizard":
+                if self.player_two.chosen_gesture == 'rock' or self.player_two.chosen_gesture == 'scissors':
+                    self.player_two.score += 1
+                else:
+                    self.player_one.score += 1
+                print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
+            elif self.player_one.chosen_gesture == "spock":
+                if self.player_two.chosen_gesture == 'lizard' or self.player_two.chosen_gesture == 'paper':
+                    self.player_two.score += 1
+                else:
+                    self.player_one.score += 1
+                print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
 
     def display_gesture_options(self):
         print(
