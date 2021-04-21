@@ -1,6 +1,7 @@
 class Player:
     def __init__(self):
-        self.name = " "
+        # default name
+        self.name = "AI"
         self.gestures = ["rock", "paper", "scissors", "lizard", "spock"]
         self.chosen_gesture = " "
         self.score = 0

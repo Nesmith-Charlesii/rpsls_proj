@@ -2,7 +2,6 @@ from player_class import Player
 from human_class import Human
 from computer_class import Computer
 
-
 class Game:
     def __init__(self):
         self.player_one = Human()
@@ -34,11 +33,20 @@ class Game:
         print(f"\n\t{self.play_mode} selected")
 
     def play(self):
-        while self.player_one.score or self.player_two.score != 2 or 3:
+        while self.player_one.score < 3 and self.player_two.score < 3:
             self.display_gesture_options()
             self.player_one.throw_hand()
-            self.player_two.computer_gesture()
-
+            self.player_two.computer_hand()
+            if self.player_one.throw_hand() == 'rock':
+                pass
+            if self.player_one.throw_hand() == 'paper':
+                pass
+            if self.player_one.throw_hand() == 'scissors':
+                pass
+            if self.player_one.throw_hand() == 'lizard':
+                pass
+            if self.player_one.throw_hand() == 'spock':
+                pass
         pass
 
     def display_gesture_options(self):
