@@ -8,7 +8,11 @@ class Human(Player):
 
     def set_name(self):
         user_name = input("Hello new player! Please, enter your name:  ")
-        self.name = user_name
+        while not user_name.isalpha():
+            print("\nPlayer names must be letters only")
+            user_name = input("Hello new player! Please, enter your name:  ")
+        else:
+            self.name = user_name
 
     def throw_hand(self):
         user_choice = input("\nChoose your hand! : ")

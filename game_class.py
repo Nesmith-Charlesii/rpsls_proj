@@ -21,22 +21,23 @@ class Game:
         self.player_one.set_name()
         print(f"Welcome {self.player_one.name}")
 
-    # CREATE A WHILE LOOP TO RE-PROMPT FOR VALIDITY
     def play_mode_selection(self):
-        mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
-        while mode != '1' or mode != '2':
+        # input is returned as a string even if numbers are the input
+        mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode: ")
+        print(f"{mode}")
+        while mode != "1" and mode != "2":
             print("\nPlease choose either '1' for single player or '2' for multiplayer")
-            mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:   ")
+            mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode: ")
         else:
-            if mode == '1':
+            if mode == "1":
                 mode = 'SINGLE PLAYER'
-            elif mode == '2':
+            elif mode == "2":
                 mode = 'MULTIPLAYER'
                 self.player_two = Human()
                 self.player_two.set_name()
                 print(f"Welcome {self.player_two.name}")
-        self.play_mode = mode
-        print(f"\n\t{self.play_mode} selected")
+            self.play_mode = mode
+            print(f"\n\t{self.play_mode} selected")
 
     def play(self):
         while self.player_one.score < self.player_two.score + 2 and self.player_two.score < self.player_one.score + 2:
