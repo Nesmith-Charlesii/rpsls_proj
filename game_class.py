@@ -17,7 +17,7 @@ class Game:
         self.display_winner()
 
     def game_intro(self):
-        print("Enter: Rock, Paper, Scissors, Lizard, Spock!\nOnly chance will tell!\n")
+        print("\nWelcome to ROCK, PAPER, SCISSORS, LIZARD, SPOCK!\nOnly chance will tell!\n")
         self.player_one.set_name()
         print(f"Welcome {self.player_one.name}")
 
@@ -28,6 +28,9 @@ class Game:
             mode = 'SINGLE PLAYER'
         elif mode == '2':
             mode = 'MULTIPLAYER'
+            self.player_two = Human()
+            self.player_two.set_name()
+            print(f"Welcome {self.player_two.name}")
         else:
             print("\nPlease enter either 1 or 2 !")
             mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
@@ -40,7 +43,7 @@ class Game:
             print(f"\nROUND {self.game_rounds}!")
             self.display_gesture_options()
             self.player_one.throw_hand()
-            self.player_two.computer_hand()
+            self.player_two.throw_hand()
             # compare gestures
             if self.player_one.chosen_gesture == self.player_two.chosen_gesture:
                 print("\nTie!")
@@ -79,8 +82,12 @@ class Game:
                     self.player_one.score += 1
                 print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
             self.game_rounds += 1
-            if self.player_one.score == self.player_two.score + 2 or self.player_two.score == self.player_one.score + 2:
+            if self.player_one.score == self.player_two.score + 2:
                 self.display_winner()
+                self.play_again()
+            elif self.player_two.score == self.player_one.score + 2:
+                self.display_winner()
+                self.play_again()
 
     def display_gesture_options(self):
         print(
@@ -88,6 +95,24 @@ class Game:
 
     def display_winner(self):
         if self.player_one.score == self.player_two.score + 2:
-            print(f"{self.player_one.name} wins!")
+            print(f"\n{self.player_one.name.upper()} wins!")
         elif self.player_two.score == self.player_one.score + 2:
-            print(f"{self.player_two.name} wins!")
+            print(f"\n{self.player_two.name.upper()} wins!")
+
+    def play_again(self):
+        user_replay = input("Play again (y/n)?:   ")
+        while user_replay != 'y' and user_replay != 'Y' and user_replay != 'n' and user_replay != 'N':
+            print("\nPlease choose either 'y' for yes or 'n' for no")
+            user_replay = input("\nPlay again (y/n)?:   ")
+        else:
+            if user_replay == 'y' or user_replay == 'Y':
+                print("run game")
+                self.player_one.score = 0
+                self.player_two.score = 0
+                self.game_rounds = 1
+                self.run_game()
+            else:
+                print("\nThanks for playing!")
+                exit()
+
+

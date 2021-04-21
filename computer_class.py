@@ -7,7 +7,7 @@ class Computer(Player):
     def __init__(self):
         super().__init__()
 
-    def computer_hand(self):
+    def throw_hand(self):
         rand = random.randrange(0, 4)
         self.chosen_gesture = self.gestures[rand]
         print(f"{self.name} has chosen to play {self.chosen_gesture}")
