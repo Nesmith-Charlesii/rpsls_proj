@@ -8,7 +8,7 @@ class Game:
         self.player_one = Human()
         self.player_two = Computer()
         self.play_mode = " "
-        self.game_rounds = 0
+        self.game_rounds = 1
 
     def run_game(self):
         self.game_intro()
@@ -37,12 +37,17 @@ class Game:
     def play(self):
         while self.game_rounds < 3:
             # show gesture options at every round
+            print(f"\nROUND {self.game_rounds}!")
             self.display_gesture_options()
             self.player_one.throw_hand()
             self.player_two.computer_hand()
             # compare gestures
             if self.player_one.chosen_gesture == self.player_two.chosen_gesture:
                 print("\nTie!")
+                # add a round if there is a tie for the game to go to 3 rounds instead of a best out of two
+                self.game_rounds += 1
+                self.player_one.score += 1
+                self.player_two.score += 1
                 print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
             elif self.player_one.chosen_gesture == "rock":
                 if self.player_two.chosen_gesture == 'paper' or self.player_two.chosen_gesture == 'spock':
@@ -75,7 +80,7 @@ class Game:
                     self.player_one.score += 1
                 print(f"\n{self.player_one.name} : {self.player_one.score}\n{self.player_two.name} : {self.player_two.score}")
             self.game_rounds += 1
-            if self.game_rounds == 3:
+            if self.game_rounds == 3 or self.game_rounds >= 3:
                 self.display_winner()
 
     def display_gesture_options(self):
