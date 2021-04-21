@@ -24,16 +24,17 @@ class Game:
     # CREATE A WHILE LOOP TO RE-PROMPT FOR VALIDITY
     def play_mode_selection(self):
         mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
-        if mode == '1':
-            mode = 'SINGLE PLAYER'
-        elif mode == '2':
-            mode = 'MULTIPLAYER'
-            self.player_two = Human()
-            self.player_two.set_name()
-            print(f"Welcome {self.player_two.name}")
+        while mode != '1' or mode != '2':
+            print("\nPlease choose either '1' for single player or '2' for multiplayer")
+            mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:   ")
         else:
-            print("\nPlease enter either 1 or 2 !")
-            mode = input("\nEnter 1 : single player\nEnter 2 : multiplayer\n\tChoose player mode:  ")
+            if mode == '1':
+                mode = 'SINGLE PLAYER'
+            elif mode == '2':
+                mode = 'MULTIPLAYER'
+                self.player_two = Human()
+                self.player_two.set_name()
+                print(f"Welcome {self.player_two.name}")
         self.play_mode = mode
         print(f"\n\t{self.play_mode} selected")
 
